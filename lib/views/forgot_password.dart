@@ -18,7 +18,11 @@ class _ForgotPasswordState extends State<ForgotPassword> {
   final formKey = GlobalKey<FormState>();
   bool isLoading = false;
 
-  ForgotPassword() async {
+  close() {
+    Navigator.pop(context);
+  }
+
+  sendMail() async {
 
     if(formKey.currentState.validate()){
       setState(() {
@@ -42,6 +46,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                       child: new Text("확인"),
                       onPressed: () {
                         Navigator.pop(context);
+                        close();
                       },
                     ),
                   ],
@@ -126,7 +131,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
             ),
             GestureDetector(
               onTap: (){
-                ForgotPassword();
+                sendMail();
               },
               child: Container(
                 padding: EdgeInsets.symmetric(vertical: 16),
