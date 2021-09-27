@@ -40,7 +40,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                 // return object of type Dialog
                 return AlertDialog(
                   title: new Text("비밀번호 재설정"),
-                  content: new Text("메일로 비밀번호 변경 링크를 전송했습니다."),
+                  content: new Text("메일로 비밀번호 재설정 링크를 전송했습니다."),
                   actions: <Widget>[
                     new FlatButton(
                       child: new Text("확인"),
