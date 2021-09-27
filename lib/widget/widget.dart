@@ -28,8 +28,16 @@ TextStyle simpleTextStyle() {
   return TextStyle(color: Colors.white, fontSize: 16);
 }
 
+TextStyle explanationTextStyle() {
+  return TextStyle(color: Colors.white70, fontSize: 14);
+}
+
 TextStyle biggerTextStyle() {
   return TextStyle(color: Colors.white, fontSize: 17);
+}
+
+Color primaryColor() {
+  return Color(0xff007EF4);
 }
 
 

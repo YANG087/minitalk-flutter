@@ -37,8 +37,11 @@ class AuthService {
 
   Future resetPass(String email) async {
     try {
-      return await _auth.sendPasswordResetEmail(email: email);
+      print("전송했음");
+      await _auth.sendPasswordResetEmail(email: email);
+      return true;
     } catch (e) {
+      print("전송 안했음");
       print(e.toString());
       return null;
     }
