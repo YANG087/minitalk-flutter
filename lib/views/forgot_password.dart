@@ -110,7 +110,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                   // Image.asset("assets/images/logo.png"),
                   SizedBox(height: 15),
                   Text(
-                    "가입하셨던 이메일로 비밀번호 변경 링크를 보내드립니다.",
+                    "가입하셨던 이메일로 비밀번호 재설정 링크를 보내드립니다.",
                     style: explanationTextStyle(),
                   ),
                   SizedBox(height: 30),
