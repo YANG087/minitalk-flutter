@@ -39,7 +39,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
               builder: (BuildContext context) {
                 // return object of type Dialog
                 return AlertDialog(
-                  title: new Text("비밀번호 찾기"),
+                  title: new Text("비밀번호 재설정"),
                   content: new Text("메일로 비밀번호 변경 링크를 전송했습니다."),
                   actions: <Widget>[
                     new FlatButton(
@@ -60,7 +60,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
               builder: (BuildContext context) {
                 // return object of type Dialog
                 return AlertDialog(
-                  title: new Text("비밀번호 찾기"),
+                  title: new Text("비밀번호 재설정"),
                   content: new Text("가입되지 않은 이메일 입니다."),
                   actions: <Widget>[
                     new FlatButton(
@@ -81,7 +81,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
 
   Widget forGotPasswordAppBar() {
     return AppBar(
-      title: Text("비밀번호 찾기"),
+      title: Text("비밀번호 재설정"),
       elevation: 0.0,
       centerTitle: false,
     );
@@ -142,7 +142,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                     )),
                 width: MediaQuery.of(context).size.width,
                 child: Text(
-                  "비밀번호 찾기",
+                  "이메일 전송",
                   style: biggerTextStyle(),
                   textAlign: TextAlign.center,
                 ),
