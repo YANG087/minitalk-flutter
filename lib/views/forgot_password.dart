@@ -18,7 +18,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
   final formKey = GlobalKey<FormState>();
   bool isLoading = false;
 
-  singUp() async {
+  ForgotPassword() async {
 
     if(formKey.currentState.validate()){
       setState(() {
@@ -126,7 +126,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
             ),
             GestureDetector(
               onTap: (){
-                singUp();
+                ForgotPassword();
               },
               child: Container(
                 padding: EdgeInsets.symmetric(vertical: 16),
