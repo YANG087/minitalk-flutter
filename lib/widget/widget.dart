@@ -2,12 +2,13 @@ import 'package:flutter/material.dart';
 
 Widget appBarMain(BuildContext context) {
   return AppBar(
-    title:
-    // Text('ktalk'),
-    Image.asset(
-      "assets/images/logo.png",
-      height: 40,
-    ),
+    title: Text('미니톡', style: TextStyle(fontFamily: "NanumSqureRound", fontSize: 20, fontWeight: FontWeight.bold)),
+    // title:
+    // // Text('ktalk'),
+    // Image.asset(
+    //   "assets/images/logo.png",
+    //   height: 40,
+    // ),
 
     elevation: 0.0,
     centerTitle: false,

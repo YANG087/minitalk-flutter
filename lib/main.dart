@@ -40,7 +40,7 @@ class _MyAppState extends State<MyApp> {
         primaryColor: Color(0xff145C9E),
         scaffoldBackgroundColor: Color(0xff1F1F1F),
         accentColor: Color(0xff007EF4),
-        fontFamily: "OverpassRegular",
+        fontFamily: "NanumSqureRound",
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: userIsLoggedIn != null ?  userIsLoggedIn ? ChatRoom() : Authenticate()

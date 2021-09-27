@@ -59,10 +59,11 @@ class _ChatRoomState extends State<ChatRoom> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Image.asset(
-          "assets/images/logo.png",
-          height: 40,
-        ),
+        title: Text('미니톡', style: TextStyle(fontFamily: "NanumSqureRound", fontSize: 20, fontWeight: FontWeight.bold)),
+        // title: Image.asset(
+        //   "assets/images/logo.png",
+        //   height: 40,
+        // ),
         elevation: 0.0,
         centerTitle: false,
         actions: [
@@ -124,8 +125,9 @@ class ChatRoomsTile extends StatelessWidget {
                   style: TextStyle(
                       color: Colors.white,
                       fontSize: 16,
-                      fontFamily: 'OverpassRegular',
+                      fontFamily: 'NanumSqureRound',
                       fontWeight: FontWeight.w300)),
+                      padding: EdgeInsets.fromLTRB(0, 5, 0, 0),
             ),
             SizedBox(
               width: 12,
@@ -135,7 +137,7 @@ class ChatRoomsTile extends StatelessWidget {
                 style: TextStyle(
                     color: Colors.white,
                     fontSize: 16,
-                    fontFamily: 'OverpassRegular',
+                    fontFamily: 'NanumSqureRound',
                     fontWeight: FontWeight.w300))
           ],
         ),
