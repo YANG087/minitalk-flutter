@@ -177,7 +177,7 @@ class MessageTile extends StatelessWidget {
             style: TextStyle(
             color: Colors.white,
             fontSize: 16,
-            fontFamily: 'OverpassRegular',
+            fontFamily: 'NanumSqureRound',
             fontWeight: FontWeight.w300)),
       ),
     );
