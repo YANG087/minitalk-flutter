@@ -1,4 +1,5 @@
 import 'package:chatapp/helper/helperfunctions.dart';
+import 'package:chatapp/views/DevelopedInfo.dart';
 import 'package:chatapp/widget/widget.dart';
 import 'package:flutter/material.dart';
 
@@ -51,21 +52,24 @@ class _MainDrawerState extends State<MainDrawer> {
             ),
             ListTile(
               leading: Icon(
-                Icons.home,
+                Icons.people,
                 color: Colors.white,
               ),
               title: Text(
-                'Home',
+                'Developed By',
                 style: TextStyle(
                   color: Colors.white
                 ),
               ),
               trailing: Icon(
-                Icons.add,
+                Icons.arrow_right,
                 color: Colors.white,
               ),
               onTap: () {
-                print('Home!');
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => DeveloperInfo()));
               },
             ),
           ],
