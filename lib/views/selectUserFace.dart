@@ -21,7 +21,7 @@ class _SelectUserFaceState extends State<SelectUserFace> {
       "faceNum" : faceNum,
     };
 
-    databaseMethods.addFace(email, userFace);
+    databaseMethods.addFace(userName, userFace);
     showDialog(
       context: context,
       builder: (BuildContext context) {

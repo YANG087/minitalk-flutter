@@ -44,9 +44,9 @@ class DatabaseMethods {
     });
   }
 
-  Future<String> getFace(userEmail) async {
+  Future<String> getFace(userName) async {
     String faceNumStr = "1";
-    await Firestore.instance.collection('userFace').document(userEmail).get().then((DocumentSnapshot ds) async {
+    await Firestore.instance.collection('userFace').document(userName).get().then((DocumentSnapshot ds) async {
       var faceNum = ds['faceNum'];
       faceNumStr = faceNum;
     });

@@ -19,13 +19,10 @@ class _MainDrawerState extends State<MainDrawer> {
   DatabaseMethods databaseMethods = new DatabaseMethods();
   String myName = "";
   String email = "";
-  String faceNum = "1";
+  String faceNum = "";
 
-  initiateFace(String userEmail) async {
-    print("initiateFace1");
-    print("$userEmail");
-    String faceNumStr = await databaseMethods.getFace(userEmail);
-    print("$faceNumStr");
+  initiateFace(String userName) async {
+    String faceNumStr = await databaseMethods.getFace(userName);
     faceNum = faceNumStr;
     setState(() {
     });
@@ -34,7 +31,7 @@ class _MainDrawerState extends State<MainDrawer> {
   getUserInfo() async {
     myName = await HelperFunctions.getUserNameSharedPreference();
     email = await HelperFunctions.getUserEmailSharedPreference();
-    initiateFace(email);
+    initiateFace(myName);
     setState(() {
     });
   }
@@ -71,10 +68,7 @@ class _MainDrawerState extends State<MainDrawer> {
             UserAccountsDrawerHeader(
               accountName: Text(myName),
               accountEmail: Text(email),
-              currentAccountPicture: CircleAvatar(
-                backgroundImage: showFaceIcon(faceNum),
-                backgroundColor: Colors.white,
-              ),
+              currentAccountPicture: showFaceIcon(faceNum),
               onDetailsPressed: () {
                 print('detail 클릭');
               },
@@ -159,8 +153,14 @@ class _MainDrawerState extends State<MainDrawer> {
   }
 }
 
-AssetImage showFaceIcon(String faceNum){
-  if(faceNum == "1") return AssetImage('assets/images/face_1.png');
-  if(faceNum == "2") return AssetImage('assets/images/face_2.png');
-  else return AssetImage('assets/images/face_3.png');
+Widget showFaceIcon(String faceNum){
+  AssetImage img;
+  if(faceNum == "1") img = AssetImage('assets/images/face_1.png');
+  if(faceNum == "2") img = AssetImage('assets/images/face_2.png');
+  if(faceNum == "3") img = AssetImage('assets/images/face_3.png');
+  else return null;
+  return CircleAvatar(
+    backgroundImage: img,
+    backgroundColor: Colors.white,
+  );
 }
