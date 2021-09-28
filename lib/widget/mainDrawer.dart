@@ -41,22 +41,6 @@ class _MainDrawerState extends State<MainDrawer> {
     getUserInfo();
     super.initState();
   }
-  @override
-  void deactivate() {
-    print("deactivate");
-    super.deactivate();
-  }
-
-  @override
-  void didChangeDependencies() {
-    print("didChangeDependencies");
-    super.didChangeDependencies();
-  }
-  @override
-  void didUpdateWidget(covariant MainDrawer oldWidget) {
-    print("didUpdateWidget");
-    super.didUpdateWidget(oldWidget);
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -154,11 +138,12 @@ class _MainDrawerState extends State<MainDrawer> {
 }
 
 Widget showFaceIcon(String faceNum){
+  print("showFaceIcon: $faceNum");
   AssetImage img;
   if(faceNum == "1") img = AssetImage('assets/images/face_1.png');
   if(faceNum == "2") img = AssetImage('assets/images/face_2.png');
   if(faceNum == "3") img = AssetImage('assets/images/face_3.png');
-  else return null;
+
   return CircleAvatar(
     backgroundImage: img,
     backgroundColor: Colors.white,

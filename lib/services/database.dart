@@ -45,11 +45,13 @@ class DatabaseMethods {
   }
 
   Future<String> getFace(userName) async {
+    print("userName: $userName");
     String faceNumStr = "1";
     await Firestore.instance.collection('userFace').document(userName).get().then((DocumentSnapshot ds) async {
       var faceNum = ds['faceNum'];
       faceNumStr = faceNum;
     });
+    print("faceNumStr: $faceNumStr");
     return faceNumStr;
   }
 
