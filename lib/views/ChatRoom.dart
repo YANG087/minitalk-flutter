@@ -6,6 +6,7 @@ import 'package:chatapp/services/auth.dart';
 import 'package:chatapp/services/database.dart';
 import 'package:chatapp/views/chat.dart';
 import 'package:chatapp/views/search.dart';
+import 'package:chatapp/widget/mainDrawer.dart';
 import 'package:flutter/material.dart';
 
 class ChatRoom extends StatefulWidget {
@@ -58,6 +59,7 @@ class _ChatRoomState extends State<ChatRoom> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: MainDrawer(),
       appBar: AppBar(
         title: Text('미니톡', style: TextStyle(fontFamily: "NanumSqureRound", fontSize: 20, fontWeight: FontWeight.bold)),
         // title: Image.asset(

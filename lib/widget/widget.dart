@@ -41,4 +41,8 @@ Color primaryColor() {
   return Color(0xff007EF4);
 }
 
+Color primaryColor2() {
+  return Color(0xff2A75BC);
+}
+
 
