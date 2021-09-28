@@ -1,5 +1,8 @@
+import 'package:chatapp/helper/authenticate.dart';
 import 'package:chatapp/helper/helperfunctions.dart';
+import 'package:chatapp/services/auth.dart';
 import 'package:chatapp/views/DevelopedInfo.dart';
+import 'package:chatapp/views/selectUserFace.dart';
 import 'package:chatapp/widget/widget.dart';
 import 'package:flutter/material.dart';
 
@@ -70,6 +73,27 @@ class _MainDrawerState extends State<MainDrawer> {
                     context,
                     MaterialPageRoute(
                         builder: (context) => DeveloperInfo()));
+              },
+            ),
+            ListTile(
+              leading: Icon(
+                Icons.people,
+                color: Colors.white,
+              ),
+              title: Text(
+                '로그아웃',
+                style: TextStyle(
+                    color: Colors.white
+                ),
+              ),
+              trailing: Icon(
+                Icons.arrow_right,
+                color: Colors.white,
+              ),
+              onTap: () {
+                AuthService().signOut();
+                Navigator.pushReplacement(context,
+                    MaterialPageRoute(builder: (context) => Authenticate()));
               },
             ),
           ],

@@ -52,7 +52,24 @@ class _SignInState extends State<SignIn> {
         } else {
           setState(() {
             isLoading = false;
-            //show snackbar
+            showDialog(
+              context: context,
+              builder: (BuildContext context) {
+                // return object of type Dialog
+                return AlertDialog(
+                  title: new Text("로그인"),
+                  content: new Text("이메일, 비밀번호를 확인해주세요."),
+                  actions: <Widget>[
+                    new FlatButton(
+                      child: new Text("확인"),
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                    ),
+                  ],
+                );
+              },
+            );
           });
         }
       });
