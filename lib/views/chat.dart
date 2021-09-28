@@ -17,6 +17,7 @@ class Chat extends StatefulWidget {
 class _ChatState extends State<Chat> {
 
   Stream<QuerySnapshot> chats;
+  String faceNum;
   TextEditingController messageEditingController = new TextEditingController();
 
   Widget chatMessages(){
@@ -29,6 +30,7 @@ class _ChatState extends State<Chat> {
               return MessageTile(
                 message: snapshot.data.documents[index].data["message"],
                 sendByMe: Constants.myName == snapshot.data.documents[index].data["sendBy"],
+                faceNum: faceNum,
               );
             }) : Container();
       },
@@ -58,6 +60,12 @@ class _ChatState extends State<Chat> {
     DatabaseMethods().getChats(widget.chatRoomId).then((val) {
       setState(() {
         chats = val;
+      });
+    });
+    DatabaseMethods().getFace(widget.chatRoomId.replaceAll("_", "").replaceAll(Constants.myName, "")).then((val) {
+      setState(() {
+        faceNum = val;
+        print("initState $faceNum");
       });
     });
     super.initState();
@@ -132,8 +140,9 @@ class _ChatState extends State<Chat> {
 class MessageTile extends StatelessWidget {
   final String message;
   final bool sendByMe;
+  final String faceNum;
 
-  MessageTile({@required this.message, @required this.sendByMe});
+  MessageTile({@required this.message, @required this.sendByMe, this.faceNum});
 
 
   @override
@@ -184,3 +193,15 @@ class MessageTile extends StatelessWidget {
   }
 }
 
+Widget showFaceIcon(String faceNum){
+  print("showFaceIcon: $faceNum");
+  AssetImage img;
+  if(faceNum == "1") img = AssetImage('assets/images/face_1.png');
+  if(faceNum == "2") img = AssetImage('assets/images/face_2.png');
+  if(faceNum == "3") img = AssetImage('assets/images/face_3.png');
+
+  return CircleAvatar(
+    backgroundImage: img,
+    backgroundColor: Colors.white,
+  );
+}
