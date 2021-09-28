@@ -34,6 +34,25 @@ class DatabaseMethods {
     });
   }
 
+  Future<bool> addFace(userEmail, face) {
+    Firestore.instance
+        .collection("userFace")
+        .document(userEmail)
+        .setData(face)
+        .catchError((e) {
+      print(e);
+    });
+  }
+
+  Future<String> getFace(userEmail) async {
+    String faceNumStr = "1";
+    await Firestore.instance.collection('userFace').document(userEmail).get().then((DocumentSnapshot ds) async {
+      var faceNum = ds['faceNum'];
+      faceNumStr = faceNum;
+    });
+    return faceNumStr;
+  }
+
   getChats(String chatRoomId) async{
     return Firestore.instance
         .collection("ChatRoom")
