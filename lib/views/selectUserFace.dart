@@ -15,7 +15,6 @@ class _SelectUserFaceState extends State<SelectUserFace> {
 
   addFace(String faceNum) async{
     String userName = await HelperFunctions.getUserNameSharedPreference();
-    String email = await HelperFunctions.getUserEmailSharedPreference();
     Map<String, dynamic> userFace = {
       "users": userName,
       "faceNum" : faceNum,

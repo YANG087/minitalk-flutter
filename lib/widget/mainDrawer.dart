@@ -5,7 +5,6 @@ import 'package:chatapp/services/database.dart';
 import 'package:chatapp/views/DevelopedInfo.dart';
 import 'package:chatapp/views/selectUserFace.dart';
 import 'package:chatapp/widget/widget.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 class MainDrawer extends StatefulWidget {

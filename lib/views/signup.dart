@@ -1,5 +1,4 @@
 import 'package:chatapp/helper/helperfunctions.dart';
-import 'package:chatapp/helper/theme.dart';
 import 'package:chatapp/services/auth.dart';
 import 'package:chatapp/services/database.dart';
 import 'package:chatapp/views/ChatRoom.dart';
@@ -174,6 +173,5 @@ class _SignUpState extends State<SignUp> {
         ),
       ),
     );
-    ;
   }
 }
