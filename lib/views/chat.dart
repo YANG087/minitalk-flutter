@@ -1,4 +1,4 @@
-import 'dart:io';
+
 import 'package:chatapp/helper/constants.dart';
 import 'package:chatapp/services/database.dart';
 import 'package:chatapp/widget/widget.dart';
@@ -17,7 +17,6 @@ class Chat extends StatefulWidget {
 class _ChatState extends State<Chat> {
 
   Stream<QuerySnapshot> chats;
-  String faceNum;
   TextEditingController messageEditingController = new TextEditingController();
 
   Widget chatMessages(){
@@ -25,12 +24,11 @@ class _ChatState extends State<Chat> {
       stream: chats,
       builder: (context, snapshot){
         return snapshot.hasData ?  ListView.builder(
-          itemCount: snapshot.data.documents.length,
+            itemCount: snapshot.data.documents.length,
             itemBuilder: (context, index){
               return MessageTile(
                 message: snapshot.data.documents[index].data["message"],
                 sendByMe: Constants.myName == snapshot.data.documents[index].data["sendBy"],
-                faceNum: faceNum,
               );
             }) : Container();
       },
@@ -60,12 +58,6 @@ class _ChatState extends State<Chat> {
     DatabaseMethods().getChats(widget.chatRoomId).then((val) {
       setState(() {
         chats = val;
-      });
-    });
-    DatabaseMethods().getFace(widget.chatRoomId.replaceAll("_", "").replaceAll(Constants.myName, "")).then((val) {
-      setState(() {
-        faceNum = val;
-        print("initState $faceNum");
       });
     });
     super.initState();
@@ -140,9 +132,8 @@ class _ChatState extends State<Chat> {
 class MessageTile extends StatelessWidget {
   final String message;
   final bool sendByMe;
-  final String faceNum;
 
-  MessageTile({@required this.message, @required this.sendByMe, this.faceNum});
+  MessageTile({@required this.message, @required this.sendByMe});
 
 
   @override
@@ -155,53 +146,41 @@ class MessageTile extends StatelessWidget {
           right: sendByMe ? 24 : 0),
       alignment: sendByMe ? Alignment.centerRight : Alignment.centerLeft,
       child: Container(
-        margin: sendByMe
-            ? EdgeInsets.only(left: 30)
-            : EdgeInsets.only(right: 30),
-        padding: EdgeInsets.only(
-            top: 17, bottom: 17, left: 20, right: 20),
-        decoration: BoxDecoration(
+          margin: sendByMe
+              ? EdgeInsets.only(left: 30)
+              : EdgeInsets.only(right: 30),
+          padding: EdgeInsets.only(
+              top: 17, bottom: 17, left: 20, right: 20),
+          decoration: BoxDecoration(
             borderRadius: sendByMe ? BorderRadius.only(
                 topLeft: Radius.circular(23),
                 topRight: Radius.circular(23),
                 bottomLeft: Radius.circular(23)
             ) :
             BorderRadius.only(
-        topLeft: Radius.circular(23),
-          topRight: Radius.circular(23),
-          bottomRight: Radius.circular(23)),
+                topLeft: Radius.circular(23),
+                topRight: Radius.circular(23),
+                bottomRight: Radius.circular(23)),
             gradient: LinearGradient(
-              colors: sendByMe ? [
+                colors: sendByMe ? [
                 const Color(0xff007EF4),
                 const Color(0xff2A75BC)
-              ]
-                  : [
+                ]
+                : [
                 const Color(0x1AFFFFFF),
-                const Color(0x1AFFFFFF)
-              ],
-            )
-        ),
-        child: Text(message,
-            textAlign: TextAlign.start,
-            style: TextStyle(
-            color: Colors.white,
-            fontSize: 16,
-            fontFamily: 'NanumSqureRound',
-            fontWeight: FontWeight.w300)),
+            const Color(0x1AFFFFFF)
+            ],
+          )
       ),
+      child: Text(message,
+          textAlign: TextAlign.start,
+          style: TextStyle(
+              color: Colors.white,
+              fontSize: 16,
+              fontFamily: 'NanumSqureRound',
+              fontWeight: FontWeight.w300)),
+    ),
     );
   }
 }
 
-Widget showFaceIcon(String faceNum){
-  print("showFaceIcon: $faceNum");
-  AssetImage img;
-  if(faceNum == "1") img = AssetImage('assets/images/face_1.png');
-  if(faceNum == "2") img = AssetImage('assets/images/face_2.png');
-  if(faceNum == "3") img = AssetImage('assets/images/face_3.png');
-
-  return CircleAvatar(
-    backgroundImage: img,
-    backgroundColor: Colors.white,
-  );
-}
